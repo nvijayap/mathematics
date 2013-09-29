@@ -1,6 +1,7 @@
 mathematics
 ===========
-Wrapper around Ruby Math module; Has additional methods.
+Wrapper around Ruby Math module; Has additional methods.<br/>
+http://rubygems.org/gems/mathematics
 
 install
 =======
