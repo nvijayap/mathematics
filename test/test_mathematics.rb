@@ -13,7 +13,25 @@ class TestColorize < Test::Unit::TestCase
     assert Mathematics.desc == "Wrapper around Math module; Has additional methods."
   end
 
-  # .........................
+  # .. min .......................
+
+  def test_min
+    assert Mathematics.min(1,2,3) == 1
+  end
+
+  # .. max .......................
+
+  def test_max
+    assert Mathematics.max(1,2,3) == 3
+  end
+
+  # .. minmax .......................
+
+  def test_minmax
+    assert Mathematics.minmax(1,2,3,4,5) == [1,5]
+  end
+
+  # .. sum .......................
   
   def test_add
     assert Mathematics.add(1,2) == 3
