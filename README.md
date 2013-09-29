@@ -29,5 +29,4 @@ Feel free to provide comments
 
 LICENSE
 =======
-MIT
-http://opensource.org/licenses/MIT
+MIT - http://opensource.org/licenses/MIT
