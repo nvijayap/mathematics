@@ -27,13 +27,13 @@ module Mathematics
   # .. minmax .......................
 
   def self.minmax *a
-    [(min *a), (max *a)]
+    a.minmax
   end
 
   # .. sum .......................
 
   def self.add *a
-    _sum *a
+    a.reduce :+
   end
 
   def self.sum *a
@@ -47,7 +47,7 @@ module Mathematics
   # .. mean .......................
   
   def self.average *a
-    1.0 * (_sum *a) / a.size
+    1.0 * (a.reduce :+) / a.size
   end
 
   def self.avg *a
@@ -58,12 +58,50 @@ module Mathematics
     average *a
   end
 
-  private # -- private -----------------------
+  # .. median .......................
 
-  def self._sum *a
-    a.inject { |sum, e| sum + e }
+  def self.median *a
+    a.sort!
+    n = a.size
+    n.odd? ? a[(n-1)/2] : avg(1.0 * a[n/2], a[n/2-1])
   end
-  
+
+  # .. mode .......................
+
+  def self.mode *a
+    h = Hash.new(0)
+    a.each { |e| h[e] = h[e] + 1 }
+    (h.sort_by &:last).last[0]
+  end
+
+  # .. range .......................
+
+  def self.range *a
+    (max *a) - (min *a)
+  end
+
+  # .. variance .......................
+
+  def self.variance *a
+    m = mean *a
+    b = a.map { |e| (e-m)*(e-m) } # / a.size
+    b.inject { |s,e| s+e } / b.size
+  end
+
+  def self.var *a
+    variance *a
+  end
+
+  # .. standard deviation .......................
+
+  def self.stddev *a
+    Math.sqrt(variance *a)
+  end
+
+  def self.sd *a
+    stddev *a
+  end
+
   # == method_missing ==============================================
 
   def self.method_missing m, *a

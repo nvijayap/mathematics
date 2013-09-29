@@ -60,7 +60,27 @@ class TestColorize < Test::Unit::TestCase
   end
   
   # .........................
+
+  def test_median
+    assert Mathematics.median(1,2,4,7,11) == 4
+    assert Mathematics.median(1,2,4,7,11,13) == 5.5
+  end
   
+  # .........................
+
+  def test_mode
+    assert Mathematics.mode(1,2,2,3,3,3) == 3
+  end
+  
+  # .........................
+
+  def test_range
+    assert Mathematics.range(0,1,2,3,4,5,6,7,8,9) == 9
+    assert Mathematics.range(3,4,5,6,7,8) == 5
+  end
+  
+  # .........................
+
   def test_sin_0
     assert Mathematics.sin(0) == 0
   end
