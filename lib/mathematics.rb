@@ -1,8 +1,23 @@
+#
+# mathematics.rb
+#
+# IMPORTANT NOTE:
+# --------------
+# This program introduces/relies on "Prior Knowledge"
+# in the domain of mathematics, and avoids
+# computation where unnecessary.
+#
+# Also, resorting to computation sometimes doesn't yield
+# perfect results as known/anticipated. Example:
+#
+# $ ruby -e "puts Math.sin(Math::PI) # I expect 0"
+# 1.2246467991473532e-16
+#
 module Mathematics
 
-  extend Math
+  extend Math # rely on Math module / build atop Math module
 
-  # .. desc .......................
+  # .. describe .......................
 
   def self.describe
     "Wrapper around Math module; Has additional methods."
@@ -45,7 +60,7 @@ module Mathematics
   end
 
   # .. mean .......................
-  
+
   def self.average *a
     1.0 * (a.reduce :+) / a.size
   end
@@ -102,11 +117,29 @@ module Mathematics
     stddev *a
   end
 
-  # == method_missing ==============================================
+  # == method_missing ========================================================
 
   def self.method_missing m, *a
-    Math.send m, *a
+    case m.to_s
+    when "sin" # rely on known knowledge first, before relying on Math module
+      rad = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      case rad
+      when 0; 0
+      when 90; 1
+      when 180; 0
+      when 270; -1
+      else Math.sin(a[0])
+      end
+    when "cos" # rely on known knowledge first, before relying on Math module
+      rad = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      case rad
+      when 0; 1
+      when 90; 0
+      when 180; -1
+      when 270; 0
+      else Math.cos(a[0])
+      end
+    end
   end
 
 end
-
