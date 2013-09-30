@@ -3,22 +3,22 @@ mathematics
 Wrapper around Ruby Math module; Has additional methods.<br/>
 http://rubygems.org/gems/mathematics
 
-#<br/>
-# mathematics.rb<br/>
-#<br/>
-# IMPORTANT NOTE:<br/>
-# --------------<br/>
-# This program introduces/relies on "Prior Knowledge"<br/>
-# in the domain of mathematics, and avoids<br/>
-# computation where unnecessary.<br/>
-#<br/>
-# Also, resorting to computation sometimes doesn't yield<br/>
-# perfect results as known/anticipated. Example:<br/>
-# (environment: ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0])<br/>
-#<br/>
-# $ ruby -e "puts Math.sin(Math::PI) # I expect 0"<br/>
-# 1.2246467991473532e-16<br/>
-#<br/>
+--------------<br/>
+mathematics.rb<br/>
+--------------<br/>
+<br/>
+IMPORTANT NOTE:<br/>
+--------------<br/>
+This program introduces/relies on "Prior Knowledge"<br/>
+in the domain of mathematics, and avoids<br/>
+computation where unnecessary.<br/>
+<br/>
+Also, resorting to computation sometimes doesn't yield<br/>
+perfect results as known/anticipated. Example:<br/>
+(environment: ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0])<br/>
+<br/>
+$ ruby -e "puts Math.sin(Math::PI) # I expect 0"<br/>
+1.2246467991473532e-16<br/>
 
 install
 =======
