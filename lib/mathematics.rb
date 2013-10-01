@@ -117,43 +117,65 @@ module Mathematics
     stddev *a
   end
 
+  # .. factorial .......................
+
+  def self.factorial n
+    if (n < 0)
+      return nil
+    elsif (n <= 1)
+      return 1
+    else
+      n * factorial(n-1)
+    end
+  end
+
+  # .. sin .......................
+
+  def self.sin radians
+    h = Hash.new(Math.sin(radians))
+    h[0.0] = 0
+    h[90.0] = 1
+    h[180.0] = 0
+    h[270.0] = -1
+    degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
+    h[degrees]
+  end
+
+  # .. cos .......................
+
+  def self.cos radians
+    h = Hash.new(Math.cos(radians))
+    h[0.0] = 1
+    h[90.0] = 0
+    h[180.0] = -1
+    h[270.0] = 0
+    degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
+    h[degrees]
+  end
+
+  # .. tan .......................
+
+  def self.tan radians
+    h = Hash.new(Math.tan(radians))
+    h[0] = 0
+    h[45] = 1
+    h[90] = 1.0/0
+    h[135] = -1
+    h[180] = 0
+    h[225] = 1
+    h[270] = -1.0/0
+    h[315] = -1
+    degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
+    # to deal with 45, 135, 225, 315 ...
+    quantum = 1.0e-12
+    degrees = degrees.ceil if degrees.ceil - degrees < quantum
+    degrees = degrees.floor if degrees - degrees.floor < quantum
+    h[degrees]
+  end
+
   # == method_missing ========================================================
 
   def self.method_missing m, *a
-    case m.to_s
-    when "sin" # rely on known knowledge first, before relying on Math module
-      h = Hash.new(Math.sin(a[0]))
-      h[0.0] = 0
-      h[90.0] = 1
-      h[180.0] = 0
-      h[270.0] = -1
-      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
-      h[degrees]
-    when "cos" # rely on known knowledge first, before relying on Math module
-      h = Hash.new(Math.cos(a[0]))
-      h[0.0] = 1
-      h[90.0] = 0
-      h[180.0] = -1
-      h[270.0] = 0
-      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
-      h[degrees]
-    when "tan" # rely on known knowledge first, before relying on Math module
-      h = Hash.new(Math.tan(a[0]))
-      h[0] = 0
-      h[45] = 1
-      h[90] = 1.0/0
-      h[135] = -1
-      h[180] = 0
-      h[225] = 1
-      h[270] = -1.0/0
-      h[315] = -1
-      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
-      # to deal with 45, 135, 225, 315 ...
-      quantum = 1.0e-12
-      degrees = degrees.ceil if degrees.ceil - degrees < quantum
-      degrees = degrees.floor if degrees - degrees.floor < quantum
-      h[degrees]
-    end
   end
 
 end

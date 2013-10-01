@@ -93,6 +93,35 @@ class TestColorize < Test::Unit::TestCase
     assert Mathematics.sd(1,2,3) > 0.8164 && Mathematics.sd(1,2,3) < 0.8165
   end
 
+  # .. factorial .......................
+
+  def test_factorial
+    result = Mathematics.factorial(-1)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.factorial(0)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.factorial(1)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.factorial(2)
+    assert result == 2, "=> It was #{result}"
+    result = Mathematics.factorial(3)
+    assert result == 6, "=> It was #{result}"
+    result = Mathematics.factorial(4)
+    assert result == 24, "=> It was #{result}"
+    result = Mathematics.factorial(5)
+    assert result == 120, "=> It was #{result}"
+    result = Mathematics.factorial(6)
+    assert result == 720, "=> It was #{result}"
+    result = Mathematics.factorial(7)
+    assert result == 5040, "=> It was #{result}"
+    result = Mathematics.factorial(8)
+    assert result == 40320, "=> It was #{result}"
+    result = Mathematics.factorial(9)
+    assert result == 362880, "=> It was #{result}"
+    result = Mathematics.factorial(10)
+    assert result == 3628800, "=> It was #{result}"
+  end
+
   # .. sin .......................
 
   def test_sin_0
