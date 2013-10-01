@@ -188,19 +188,31 @@ class TestColorize < Test::Unit::TestCase
   end
 
   def test_tan_45
-    assert Mathematics.tan(0.25*Math::PI/4) == 1, "It was #{Mathematics.tan(0.25*Math::PI)}"
+    assert Mathematics.tan(0.25*Math::PI) == 1, "It was #{Mathematics.tan(0.25*Math::PI)}"
   end
 
   def test_tan_90
     assert Mathematics.tan(0.5*Math::PI) == 1.0/0, "It was #{Mathematics.tan(0.5*Math::PI)}"
   end
 
+  def test_tan_135
+    assert Mathematics.tan(0.75*Math::PI) == -1, "It was #{Mathematics.tan(0.75*Math::PI)}"
+  end
+
   def test_tan_180
     assert Mathematics.tan(Math::PI) == 0, "It was #{Mathematics.tan(Math::PI)}"
   end
 
+  def test_tan_225
+    assert Mathematics.tan(1.25*Math::PI) == 1, "It was #{Mathematics.tan(1.25*Math::PI)}"
+  end
+
   def test_tan_270
     assert Mathematics.tan(1.5*Math::PI) == -1.0/0, "It was #{Mathematics.tan(1.5*Math::PI)}"
+  end
+
+  def test_tan_315
+    assert Mathematics.tan(1.75*Math::PI) == -1, "It was #{Mathematics.tan(1.75*Math::PI)}"
   end
 
   def test_tan_360
@@ -215,8 +227,16 @@ class TestColorize < Test::Unit::TestCase
     assert Mathematics.tan(2.5*Math::PI) == 1.0/0, "It was #{Mathematics.tan(2.5*Math::PI)}"
   end
 
+  def test_tan_495
+    assert Mathematics.tan(2.75*Math::PI) == -1, "It was #{Mathematics.tan(2.75*Math::PI)}"
+  end
+
   def test_tan_540
     assert Mathematics.tan(3*Math::PI) == 0, "It was #{Mathematics.tan(3*Math::PI)}"
+  end
+
+  def test_tan_585
+    assert Mathematics.tan(3.25*Math::PI) == 1, "It was #{Mathematics.tan(3.25*Math::PI)}"
   end
 
   def test_tan_630
@@ -224,7 +244,7 @@ class TestColorize < Test::Unit::TestCase
   end
 
   def test_tan_675
-    assert Mathematics.tan(3.75*Math::PI) == 1.0, "It was #{Mathematics.tan(3.75*Math::PI)}"
+    assert Mathematics.tan(3.75*Math::PI) == -1, "It was #{Mathematics.tan(3.75*Math::PI)}"
   end
 
   def test_tan_720

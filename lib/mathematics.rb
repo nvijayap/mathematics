@@ -138,16 +138,18 @@ module Mathematics
       degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
       h[degrees]
     when "tan" # rely on known knowledge first, before relying on Math module
-      h = Hash.new(Math.tan(a[0]))
-      h[0.0] = 0
-      h[45.0] = 1
-      h[90.0] = 1.0/0
-      h[135.0] = -1
-      h[180.0] = 0
-      h[225.0] = 1
-      h[270.0] = -1.0/0
-      h[315.0] = -1
+      h = {}
+      h["0.0"] = 0
+      h["45.0"] = 1
+      h["90.0"] = 1.0/0
+      h["135.0"] = -1
+      h["180.0"] = 0
+      h["225.0"] = 1
+      h["270.0"] = -1.0/0
+      h["315.0"] = -1
+      h.default = Math.tan(a[0])
       degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      degrees = ('%.1f' % degrees).to_s
       h[degrees]
     end
   end
