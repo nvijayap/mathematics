@@ -122,23 +122,33 @@ module Mathematics
   def self.method_missing m, *a
     case m.to_s
     when "sin" # rely on known knowledge first, before relying on Math module
-      rad = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
-      case rad
-      when 0; 0
-      when 90; 1
-      when 180; 0
-      when 270; -1
-      else Math.sin(a[0])
-      end
+      h = Hash.new(Math.sin(a[0]))
+      h[0.0] = 0
+      h[90.0] = 1
+      h[180.0] = 0
+      h[270.0] = -1
+      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      h[degrees]
     when "cos" # rely on known knowledge first, before relying on Math module
-      rad = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
-      case rad
-      when 0; 1
-      when 90; 0
-      when 180; -1
-      when 270; 0
-      else Math.cos(a[0])
-      end
+      h = Hash.new(Math.cos(a[0]))
+      h[0.0] = 1
+      h[90.0] = 0
+      h[180.0] = -1
+      h[270.0] = 0
+      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      h[degrees]
+    when "tan" # rely on known knowledge first, before relying on Math module
+      h = Hash.new(Math.tan(a[0]))
+      h[0.0] = 0
+      h[45.0] = 1
+      h[90.0] = 1.0/0
+      h[135.0] = -1
+      h[180.0] = 0
+      h[225.0] = 1
+      h[270.0] = -1.0/0
+      h[315.0] = -1
+      degrees = (a[0] / Math::PI * 180) % 360 # think in degrees for ease
+      h[degrees]
     end
   end
 
