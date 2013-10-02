@@ -1,7 +1,7 @@
 require 'test/unit'
 require File.dirname(__FILE__) + '/../lib/mathematics'
 
-class TestColorize < Test::Unit::TestCase
+class TestMathematics < Test::Unit::TestCase
 
   # .. describe .......................
 
@@ -120,6 +120,128 @@ class TestColorize < Test::Unit::TestCase
     assert result == 362880, "=> It was #{result}"
     result = Mathematics.factorial(10)
     assert result == 3628800, "=> It was #{result}"
+    result = Mathematics.factorial(11)
+    assert result == 39916800, "=> It was #{result}"
+    result = Mathematics.factorial(12)
+    assert result == 479001600, "=> It was #{result}"
+  end
+
+  # .. fact .......................
+
+  def test_fact
+    result = Mathematics.fact(-1)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.fact(0)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.fact(1)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.fact(2)
+    assert result == 2, "=> It was #{result}"
+    result = Mathematics.fact(3)
+    assert result == 6, "=> It was #{result}"
+    result = Mathematics.fact(4)
+    assert result == 24, "=> It was #{result}"
+    result = Mathematics.fact(5)
+    assert result == 120, "=> It was #{result}"
+    result = Mathematics.fact(6)
+    assert result == 720, "=> It was #{result}"
+    result = Mathematics.fact(7)
+    assert result == 5040, "=> It was #{result}"
+    result = Mathematics.fact(8)
+    assert result == 40320, "=> It was #{result}"
+    result = Mathematics.fact(9)
+    assert result == 362880, "=> It was #{result}"
+    result = Mathematics.fact(10)
+    assert result == 3628800, "=> It was #{result}"
+    result = Mathematics.fact(11)
+    assert result == 39916800, "=> It was #{result}"
+    result = Mathematics.fact(12)
+    assert result == 479001600, "=> It was #{result}"
+  end
+
+  # .. triangular_number .......................
+
+  def test_triangular_number
+    result = Mathematics.triangular_number(-1)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.triangular_number(0)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.triangular_number(1)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.triangular_number(2)
+    assert result == 3, "=> It was #{result}"
+    result = Mathematics.triangular_number(3)
+    assert result == 6, "=> It was #{result}"
+    result = Mathematics.triangular_number(4)
+    assert result == 10, "=> It was #{result}"
+    result = Mathematics.triangular_number(5)
+    assert result == 15, "=> It was #{result}"
+    result = Mathematics.triangular_number(6)
+    assert result == 21, "=> It was #{result}"
+    result = Mathematics.triangular_number(7)
+    assert result == 28, "=> It was #{result}"
+    result = Mathematics.triangular_number(8)
+    assert result == 36, "=> It was #{result}"
+    result = Mathematics.triangular_number(9)
+    assert result == 45, "=> It was #{result}"
+    result = Mathematics.triangular_number(10)
+    assert result == 55, "=> It was #{result}"
+    result = Mathematics.triangular_number(11)
+    assert result == 66, "=> It was #{result}"
+    result = Mathematics.triangular_number(12)
+    assert result == 78, "=> It was #{result}"
+    result = Mathematics.triangular_number(13)
+    assert result == 91, "=> It was #{result}"
+  end
+
+  # .. triangle_number .......................
+
+  def test_triangle_number
+    result = Mathematics.triangle_number(-1)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.triangle_number(0)
+    assert result == nil, "=> It was #{result}"
+    result = Mathematics.triangle_number(1)
+    assert result == 1, "=> It was #{result}"
+    result = Mathematics.triangle_number(2)
+    assert result == 3, "=> It was #{result}"
+    result = Mathematics.triangle_number(3)
+    assert result == 6, "=> It was #{result}"
+    result = Mathematics.triangle_number(4)
+    assert result == 10, "=> It was #{result}"
+    result = Mathematics.triangle_number(5)
+    assert result == 15, "=> It was #{result}"
+    result = Mathematics.triangle_number(6)
+    assert result == 21, "=> It was #{result}"
+    result = Mathematics.triangle_number(7)
+    assert result == 28, "=> It was #{result}"
+    result = Mathematics.triangle_number(8)
+    assert result == 36, "=> It was #{result}"
+    result = Mathematics.triangle_number(9)
+    assert result == 45, "=> It was #{result}"
+    result = Mathematics.triangle_number(10)
+    assert result == 55, "=> It was #{result}"
+    result = Mathematics.triangle_number(11)
+    assert result == 66, "=> It was #{result}"
+    result = Mathematics.triangle_number(12)
+    assert result == 78, "=> It was #{result}"
+    result = Mathematics.triangle_number(13)
+    assert result == 91, "=> It was #{result}"
+  end
+
+  # .. binomial_coefficient .......................
+
+  def test_binomial_coefficient
+    assert Mathematics.binomial_coefficient(1,-1) == 0
+    assert Mathematics.binomial_coefficient(1,2) == 0
+    assert Mathematics.binomial_coefficient(3,0) == 1
+    assert Mathematics.binomial_coefficient(3,3) == 1
+    assert Mathematics.binomial_coefficient(3,2) == 3,
+      "It was #{Mathematics.binomial_coefficient(3,2)}"
+    assert Mathematics.binomial_coefficient(4,2) == 6,
+      "It was #{Mathematics.binomial_coefficient(4,2)}"
+    assert Mathematics.binomial_coefficient(5,3) == 10,
+      "It was #{Mathematics.binomial_coefficient(5,3)}"
   end
 
   # .. sin .......................

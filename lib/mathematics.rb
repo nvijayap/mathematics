@@ -119,13 +119,44 @@ module Mathematics
 
   # .. factorial .......................
 
-  def self.factorial n
-    if (n < 0)
-      return nil
-    elsif (n <= 1)
-      return 1
+  def self.factorial n # uses "Prior Knowledge" paradigm
+    h = { 0=>1, 1=>1, 2=>2, 3=>6, 4=>24, 5=>120,
+      6=>720, 7=>5040, 8=>40320, 9=>362880, 10=>3628800 }
+    n < 0 ? nil : (h[n] || n * factorial(n-1))
+  end
+
+  def self.fact n
+    factorial n
+  end
+
+  # .. triangular_number .......................
+
+  def self.triangular_number n # uses "Prior Knowledge" paradigm
+    h = { 1=>1, 2=>3, 3=>6, 4=>10, 5=>15, 6=>21,
+    7=>28, 8=>36, 9=>45, 10=>55, 11=>66, 12=>78, 13=>91 }
+    n < 1 ? nil : (h[n] || n*(n+1)/2)
+  end
+
+  # .. triangle_number .......................
+
+  def self.triangle_number n
+    triangular_number n
+  end
+
+  # .. binomial_coefficient .......................
+
+  def self.binomial_coefficient n, k
+    if k < 0 or k > n
+      0
+    elsif k == 0 or n == k
+      1
     else
-      n * factorial(n-1)
+      c = 1
+      (1..k).each do |i|
+	c *= n - k + i
+	c /= i
+      end
+      c
     end
   end
 
