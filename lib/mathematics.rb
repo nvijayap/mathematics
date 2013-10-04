@@ -162,46 +162,34 @@ module Mathematics
 
   # .. sin .......................
 
+  @sin_hash = { 0.0 => 0, 90.0 => 1, 180.0 => 0, 270.0 => -1 }
+
   def self.sin radians
-    h = Hash.new(Math.sin(radians))
-    h[0.0] = 0
-    h[90.0] = 1
-    h[180.0] = 0
-    h[270.0] = -1
     degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
-    h[degrees]
+    @sin_hash[degrees] || Math.sin(radians)
   end
 
   # .. cos .......................
 
+  @cos_hash = { 0.0 => 1, 90.0 => 0, 180.0 => -1, 270.0 => 0 }
+
   def self.cos radians
-    h = Hash.new(Math.cos(radians))
-    h[0.0] = 1
-    h[90.0] = 0
-    h[180.0] = -1
-    h[270.0] = 0
     degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
-    h[degrees]
+    @cos_hash[degrees] || Math.cos(radians)
   end
 
   # .. tan .......................
 
+  @tan_hash = { 0 => 0, 45 => 1, 90 => 1.0/0, 135 => -1,
+    180 => 0, 225 => 1, 270 => -1.0/0, 315 => -1 }
+
   def self.tan radians
-    h = Hash.new(Math.tan(radians))
-    h[0] = 0
-    h[45] = 1
-    h[90] = 1.0/0
-    h[135] = -1
-    h[180] = 0
-    h[225] = 1
-    h[270] = -1.0/0
-    h[315] = -1
     degrees = (radians / Math::PI * 180) % 360 # think in degrees for ease
     # to deal with 45, 135, 225, 315 ...
     quantum = 1.0e-12
     degrees = degrees.ceil if degrees.ceil - degrees < quantum
     degrees = degrees.floor if degrees - degrees.floor < quantum
-    h[degrees]
+    @tan_hash[degrees] || Math.tan(radians)
   end
 
   # == method_missing ========================================================
